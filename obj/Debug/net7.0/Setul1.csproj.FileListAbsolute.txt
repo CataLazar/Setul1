@@ -1,0 +1,15 @@
+/home/sapok/Desktop/VSC/C#/Setul1/bin/Debug/net7.0/Setul1
+/home/sapok/Desktop/VSC/C#/Setul1/bin/Debug/net7.0/Setul1.deps.json
+/home/sapok/Desktop/VSC/C#/Setul1/bin/Debug/net7.0/Setul1.runtimeconfig.json
+/home/sapok/Desktop/VSC/C#/Setul1/bin/Debug/net7.0/Setul1.dll
+/home/sapok/Desktop/VSC/C#/Setul1/bin/Debug/net7.0/Setul1.pdb
+/home/sapok/Desktop/VSC/C#/Setul1/obj/Debug/net7.0/Setul1.csproj.AssemblyReference.cache
+/home/sapok/Desktop/VSC/C#/Setul1/obj/Debug/net7.0/Setul1.GeneratedMSBuildEditorConfig.editorconfig
+/home/sapok/Desktop/VSC/C#/Setul1/obj/Debug/net7.0/Setul1.AssemblyInfoInputs.cache
+/home/sapok/Desktop/VSC/C#/Setul1/obj/Debug/net7.0/Setul1.AssemblyInfo.cs
+/home/sapok/Desktop/VSC/C#/Setul1/obj/Debug/net7.0/Setul1.csproj.CoreCompileInputs.cache
+/home/sapok/Desktop/VSC/C#/Setul1/obj/Debug/net7.0/Setul1.dll
+/home/sapok/Desktop/VSC/C#/Setul1/obj/Debug/net7.0/refint/Setul1.dll
+/home/sapok/Desktop/VSC/C#/Setul1/obj/Debug/net7.0/Setul1.pdb
+/home/sapok/Desktop/VSC/C#/Setul1/obj/Debug/net7.0/Setul1.genruntimeconfig.cache
+/home/sapok/Desktop/VSC/C#/Setul1/obj/Debug/net7.0/ref/Setul1.dll
