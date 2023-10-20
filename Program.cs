@@ -24,6 +24,7 @@
     // 21. Ghiciti un numar intre 1 si 1024 prin intrebari de forma "numarul este mai mare sau egal decat x?". 
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Program{
     class Setul1{
@@ -75,6 +76,21 @@ namespace Program{
 
             System.Console.WriteLine(palindromeEx14(1234321));
             System.Console.WriteLine("------------- Ex14");
+
+            risingOrderEx15(5,1,4);
+            System.Console.WriteLine("------------- Ex15");
+
+            risingOrderNoArraysEx16(7, 8, 1, 9, 4);
+            System.Console.WriteLine("------------- Ex16");
+
+            euclidEx17(12, 20);
+            System.Console.WriteLine("------------- Ex17");
+
+            primeFactorsEx18(1176);
+            System.Console.WriteLine("------------- Ex18");
+
+            guessNumberEx21(581);
+            System.Console.WriteLine("------------- Ex21");
 
         }
 
@@ -262,9 +278,83 @@ namespace Program{
             return n == mirror;                     // If n is the same backwards and forwards, it's a palindrome
         }
 
-
+        /// <summary>
+        /// Take 3 integers as parameters, display them in rising order
+        /// </summary>
         public static void risingOrderEx15(int a, int b, int c){
-            
+            int[] rising = {a, b, c};
+            Array.Sort(rising);
+            for(int i = 0; i < 3; i++)
+                System.Console.Write(rising[i] + " ");
+            System.Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Take 5 integers as parameters, display them in rising order without making use of arrays
+        /// </summary>
+        public static void risingOrderNoArraysEx16(int a, int b, int c, int d, int e){
+            if (a > b) (b, a) = (a, b);
+            if (b > c) (c, b) = (b, c);
+            if (c > d) (d, c) = (c, d);
+            if (d > e) (e, d) = (d, e);
+            if (a > b) (b, a) = (a, b);
+            if (b > c) (c, b) = (b, c);
+            if (c > d) (d, c) = (c, d);
+            if (a > b) (b, a) = (a, b);
+            if (b > c) (c, b) = (b, c);
+            if (a > b) (b, a) = (a, b);
+
+            Console.WriteLine($"{a} {b} {c} {d} {e}");
+        }
+
+        /// <summary>
+        /// Find the GCD and LCM of a and b using Euclid's algorithm
+        /// </summary>
+        public static void euclidEx17(int a, int b){
+            int r, copyA = a, copyB = b;
+            while(copyB != 0){
+                r = copyA % copyB;
+                copyA = copyB;
+                copyB = r;
+            }
+            System.Console.WriteLine("Greatest common divisor: " + copyA);
+            System.Console.WriteLine("Least common multiple: " + (a * b / copyA));
+        }
+
+        /// <summary>
+        /// Break down n into its prime factors
+        /// </summary>
+        public static void primeFactorsEx18(int n){
+            int powCount = 0;
+            for(int d = 2; d <= n/2 && n > 1; d++){
+                while (n % d == 0){
+                    powCount++;
+                    n /= d;
+                }
+                if (powCount != 0)
+                    System.Console.Write(d + "^" + powCount + " ");
+                powCount = 0;
+            }
+            System.Console.WriteLine();
+        }
+
+        public static void doubleDigitsEx19(int n){
+
+        }
+
+        /// <summary>
+        /// Find n between 1 and 1024 using binary search
+        /// </summary>
+        public static void guessNumberEx21(int n){
+            int low = 1, high = 1024, mid = (low + high) / 2;
+            while(mid != n){
+                if (n > mid)
+                    low = mid;
+                else
+                    high = mid;
+                mid = (low + high) / 2;
+            }
+            System.Console.WriteLine(mid);
         }
     }
 }
