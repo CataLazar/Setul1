@@ -1,97 +1,142 @@
-﻿    // 1. Rezolvati ecuatia de gradul 1 cu o necunoscuta: ax+b = 0, unde a si b sunt date de intrare. 
-    // 2. Rezolvati ecuatia de gradul 2 cu o necunoscuta: ax^2 + bx + c = 0, unde a, b si c sunt date de intrare. Tratati toate cazurile posibile. 
-    // 3. Determinati daca n se divide cu k, unde n si k sunt date de intrare. 
-    // 4. Detreminati daca un an y este an bisect. 
-    // 5. Extrageti si afisati a k-a cifra de la sfarsitul unui numar. Cifrele se numara de la dreapta la stanga. 
-    // 6. Detreminati daca trei numere pozitive a, b si c pot fi lungimile laturilor unui triunghi. 
-    // 7. (Swap) Se dau doua variabile numerice a si b ale carori valori sunt date de intrare. Se cere sa se inverseze valorile lor. 
-    // 8. (Swap restrictionat) Se dau doua variabile numerice a si b ale carori valori sunt date de intrare. Se cere sa se inverseze valorile lor fara a folosi alte variabile suplimentare.  
-    // 9. Afisati toti divizorii numarului n. 
-    // 10. Test de primalitate: determinati daca un numar n este prim.
-    // 11. Afisati in ordine inversa cifrele unui numar n. 
-    // 12. Determinati cate numere integi divizibile cu n se afla in intervalul [a, b]. 
-    // 13. Determianti cati ani bisecti sunt intre anii y1 si y2.
-    // 14. Determianti daca un numar n este palindrom. (un numar este palindrom daca citit invers obtinem un numar egal cu el, de ex. 121 sau 12321. 
-    // 15. Se dau 3 numere. Sa se afiseze in ordine crescatoare. 
-    // 16. Se dau 5 numere. Sa se afiseze in ordine crescatoare. (nu folositi tablouri)
-    // 17. Determianti cel mai mare divizor comun si cel mai mic multiplu comun a doua numere. Folositi algoritmul lui Euclid. 
-    // 18. Afisati descompunerea in factori primi ai unui numar n.  De ex. pentru n = 1176 afisati 2^3 x 3^1 x 7^2. 
-    // 19. Determinati daca un numar e format doar cu 2 cifre care se pot repeta. De ex. 23222 sau 9009000 sunt astfel de numere, pe cand 593 si 4022 nu sunt. 
-    // 20. Afisati fractia m/n in format zecimal, cu perioada intre paranteze (daca e cazul). Exemplu: 13/30 = 0.4(3). (https://github.com/HoreaOros/ROSE2020/blob/master/2611/Program.cs)
-    //         O fractie este neperiodica daca numitorul este de forma 2^m*5^n unde m si n sunt mai mari sau egale decat 0
-    //         O fractie este periodica simpla daca numitorul nu se divide cu 2 si nici cu 5. 
-    //         O fractie este periodica mixta daca se divide cu 2 si/sau 5 SI se mai divide si cu alte numere prime diferite de 2 si 5. 
-    // 21. Ghiciti un numar intre 1 si 1024 prin intrebari de forma "numarul este mai mare sau egal decat x?". 
-
-using System;
+﻿using System;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
+using System.Xml;
 
 namespace Program{
-    class Setul1{
+    class Set1{
         public static void Main(){
-            int a, b;
+            int a, b, c, d, e;
 
-            firstGradeEqEx1(3,5);
-            System.Console.WriteLine("------------- Ex1");
+            Console.WriteLine("------------- Ex1");
+            Console.WriteLine("This method solves the equation \"ax + b = 0\" ");
+            a = getUserInput("a");
+            b = getUserInput("b");
+            firstGradeEqEx1(a, b);
 
-            secondGradeEqEx2(1, 5, 3);
-            System.Console.WriteLine("------------- Ex2");
+            Console.WriteLine("------------- Ex2");
+            Console.WriteLine("This method solves the equation \"ax^2 + bx + c = 0\" ");
+            a = getUserInput("a");
+            b = getUserInput("b");
+            c = getUserInput("c");
+            secondGradeEqEx2(a, b, c);
 
-            System.Console.WriteLine(divisibilityEx3(10, 5));
-            System.Console.WriteLine("------------- Ex3");
+            Console.WriteLine("------------- Ex3");
+            Console.WriteLine("This method determines if a number n is divisible by another number k");
+            a = getUserInput("number to divide by");
+            b = getUserInput("divisor");
+            Console.WriteLine(divisibilityEx3(a, b));
 
-            System.Console.WriteLine(leapYearsEx4(2500));
-            System.Console.WriteLine("------------- Ex4");
+            Console.WriteLine("------------- Ex4");
+            Console.WriteLine("This method determines whether the year passed is a leap year");
+            a = getUserInput("year to test for");
+            Console.WriteLine(leapYearEx4(a));
 
-            displayDigitEx5(-47718974, 3);
-            System.Console.WriteLine("------------- Ex5");
+            Console.WriteLine("------------- Ex5");
+            Console.WriteLine("This method finds the n-th digit of a number, counting from right to left");
+            a = getUserInput("number");
+            b = getUserInput("digit position to find");
+            displayDigitEx5(a, b);
 
-            System.Console.WriteLine(pythagorasEx6(5,3,9));
-            System.Console.WriteLine("------------- Ex6");
+            Console.WriteLine("------------- Ex6");
+            Console.WriteLine("This method determines whether 3 numbers can form the vertices of a valid triangle");
+            a = getUserInput("vertex a");
+            b = getUserInput("vertex b");
+            c = getUserInput("vertex c");
+            Console.WriteLine(pythagorasEx6(a, b, c));
 
-            a = int.Parse(Console.ReadLine());
-            b = int.Parse(Console.ReadLine());
-
+            Console.WriteLine("------------- Ex7+8");
+            Console.WriteLine("This method swaps two numbers");
+            a = getUserInput("first number to swap");
+            b = getUserInput("second number to swap");
             swapEx7(ref a, ref b);
-            System.Console.WriteLine(a + " " + b);
-
+            Console.WriteLine("Swap 1: " + a + " " + b);
             swapRestrictEx8(ref a, ref b);
-            System.Console.WriteLine(a + " " + b);
-            System.Console.WriteLine("------------- Ex7+8");
+            Console.WriteLine("Swap 2: " + a + " " + b);
 
-            divisorsEx9(42);
-            System.Console.WriteLine("------------- Ex9");
+            Console.WriteLine("------------- Ex9");
+            Console.WriteLine("This method displays all divisors of a given number");
+            a = getUserInput("number to find the divisors of");
+            divisorsEx9(a);
 
-            System.Console.WriteLine(primeEx10(7));
-            System.Console.WriteLine("------------- Ex10");
+            Console.WriteLine("------------- Ex10");
+            Console.WriteLine("This method displays whether a number is prime or not");
+            a = getUserInput("number to test the primality of");
+            Console.WriteLine(primeEx10(a));
 
-            reverseNumberEx11(1234567);
-            System.Console.WriteLine("------------- Ex11");
+            Console.WriteLine("------------- Ex11");
+            Console.WriteLine("This method reverses a given number");
+            a = getUserInput("number to reverse");
+            reverseNumberEx11(a);
 
-            countNumsDivEx12(3, 10, 55);
-            System.Console.WriteLine("------------- Ex12");
+            Console.WriteLine("------------- Ex12");
+            Console.WriteLine("This method counts all numbers divisible by a value k, within an interval [a,b]");
+            a = getUserInput("divisor");
+            b = getUserInput("lower bound");
+            c = getUserInput("upper bound");
+            countNumsDivEx12(a, b, c);
 
-            countLeapYearsEx13(1999, 2101);
-            System.Console.WriteLine("------------- Ex13");
+            Console.WriteLine("------------- Ex13");
+            Console.WriteLine("This method counts all the leap years within an interval [a,b]");
+            a = getUserInput("lower bound");
+            b = getUserInput("upper bound");
+            countLeapYearsEx13(a, b);
 
-            System.Console.WriteLine(palindromeEx14(1234321));
-            System.Console.WriteLine("------------- Ex14");
+            Console.WriteLine("------------- Ex14");
+            Console.WriteLine("This method checks if a number is a palindrome");
+            a = getUserInput("number to check for palindrome");
+            Console.WriteLine(palindromeEx14(a));
 
-            risingOrderEx15(5,1,4);
-            System.Console.WriteLine("------------- Ex15");
+            Console.WriteLine("------------- Ex15");
+            Console.WriteLine("This method takes 3 integers and displays them in rising order");
+            a = getUserInput("integer 1");
+            b = getUserInput("integer 2");
+            c = getUserInput("integer 3");
+            risingOrderEx15(a, b, c);
 
-            risingOrderNoArraysEx16(7, 8, 1, 9, 4);
-            System.Console.WriteLine("------------- Ex16");
+            Console.WriteLine("------------- Ex16");
+            Console.WriteLine("This method takes 5 integers and displays them in rising order");
+            a = getUserInput("integer 1");
+            b = getUserInput("integer 2");
+            c = getUserInput("integer 3");
+            d = getUserInput("integer 4");
+            e = getUserInput("integer 5");
+            risingOrderNoArraysEx16(a, b, c, d, e);
 
-            euclidEx17(12, 20);
-            System.Console.WriteLine("------------- Ex17");
+            Console.WriteLine("------------- Ex17");
+            Console.WriteLine("This method displays the GCD and LCM of two numbers");
+            a = getUserInput("first number");
+            b = getUserInput("second number");
+            euclidEx17(a, b);
 
-            primeFactorsEx18(1176);
-            System.Console.WriteLine("------------- Ex18");
+            Console.WriteLine("------------- Ex18");
+            Console.WriteLine("This method breaks down a number into its prime factors");
+            a = getUserInput("number to find prime factors of");
+            primeFactorsEx18(a);
 
-            guessNumberEx21(581);
-            System.Console.WriteLine("------------- Ex21");
+            Console.WriteLine("------------- Ex19");
+            Console.WriteLine("This method checks if a given number is built only using two different digits");
+            a = getUserInput("number to check for double digits");
+            Console.WriteLine(doubleDigitsEx19(a));
 
+            Console.WriteLine("------------- Ex20");
+            Console.WriteLine("This method displays a fraction (m/n) in decimal format");
+            a = getUserInput("numerator");
+            b = getUserInput("denominator");
+            displayFractionEx20(a, b);
+
+            Console.WriteLine("------------- Ex21");
+            Console.WriteLine("This method guesses a number between 1 and 1024 via 'greater' or 'smaller' statements");
+            a = getUserInput("number to guess");
+            guessNumberEx21(a);
+        }
+
+        /// <summary>
+        /// Get an integer as input from the user
+        /// </summary>
+        public static int getUserInput(string variableName){
+            Console.Write("Enter a value for '" + variableName + "': ");
+            return int.Parse(Console.ReadLine());
         }
 
         /// <summary>
@@ -143,7 +188,7 @@ namespace Program{
         /// <summary>
         /// Determine whether year "y" is a leap year
         /// </summary>
-        public static bool leapYearsEx4(int y){ // According to the Gregorian calendar,
+        public static bool leapYearEx4(int y){ // According to the Gregorian calendar,
             if (y % 4 != 0)                    // Every 4th year is a leap year...
                 return false;
             if (y % 100 == 0 && y % 400 != 0)  //... except if it's divisible by 100
@@ -255,13 +300,13 @@ namespace Program{
         public static void countLeapYearsEx13(int y1, int y2){
             int count = 0;
             for(int i = y1; i <= y2; i++)       // Find the first leap year greater than or equal to y1
-                if(leapYearsEx4(i)){
+                if(leapYearEx4(i)){
                     count++;
                     y1 = i;
                     break;
                 }
             for(int i = y1; i <= y2; i+=4)      // Only check every 4 numbers to save time
-                if(leapYearsEx4(i))
+                if(leapYearEx4(i))
                     count++;
             System.Console.WriteLine(count);
         }
@@ -326,7 +371,7 @@ namespace Program{
         /// </summary>
         public static void primeFactorsEx18(int n){
             int powCount = 0;
-            for(int d = 2; d <= n/2 && n > 1; d++){
+            for(int d = 2; d <= n && n > 1; d++){
                 while (n % d == 0){
                     powCount++;
                     n /= d;
@@ -338,8 +383,32 @@ namespace Program{
             System.Console.WriteLine();
         }
 
-        public static void doubleDigitsEx19(int n){
+        /// <summary>
+        /// Determine whether n can be built only using two different digits (e.g. 242242, 90990,  but not 812281)
+        /// </summary>
+        public static bool doubleDigitsEx19(int n){
+            int[] freq = new int[10];
+            int validate = 0;
+            for(int i = 0; i < 10; i++)
+                freq[i] = 0;
+            while(n > 0){
+                freq[n%10] = 1;
+                n /= 10;
+            }
+            for(int i = 0; i < 10; i++)
+                if(freq[i] != 0)
+                    validate++;
+            if(validate == 2)
+                return true;
+            return false;
+        }
 
+        /// <summary>
+        /// Displays the fraction m/n in decimal form
+        /// </summary>
+        public static void displayFractionEx20(int m, int n){
+            double d = (double)m / n;
+            Console.WriteLine(d.ToString("0.00"));
         }
 
         /// <summary>
